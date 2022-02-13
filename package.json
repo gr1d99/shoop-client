@@ -3,6 +3,9 @@
   "version": "4.2.14",
   "license": "MIT",
   "scripts": {
+    "build:tailwind": "tailwindcss build src/assets/css/tailwind.css -o src/assets/css/tailwind.output.css",
+    "prestart": "npm run build:tailwind",
+    "prebuild": "npm run build:tailwind",
     "start": "razzle start",
     "build": "razzle build",
     "test": "razzle test --env=jsdom",
@@ -16,11 +19,14 @@
     "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.2",
     "babel-preset-razzle": "4.2.14",
     "html-webpack-plugin": "^4.5.2",
     "mini-css-extract-plugin": "^0.9.0",
+    "postcss": "^8.4.6",
     "razzle": "^4.2.14",
     "razzle-dev-utils": "^4.2.14",
+    "tailwindcss": "^3.0.22",
     "webpack": "^4.44.1",
     "webpack-dev-server": "^3.11.2"
   }
