@@ -2,7 +2,8 @@ import { shape, string } from 'prop-types';
 import { ProductCardBase, ProductCardImage, ProductCardImageContainer } from '../../utils/themes';
 
 const ProductCard = ({ product }) => {
-  const { image, name, color, price } = product;
+  const { images, name, color, price } = product;
+  const image = images.split(/,/)?.[0] || '';
 
   return (
     <div className={ProductCardBase}>
