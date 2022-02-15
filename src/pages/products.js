@@ -1,28 +1,10 @@
 import React from 'react';
 import { ProductCard } from '../components/cards/product';
 import { AddToCartButton } from '../components/buttons/add-to-cart';
-import API from '../api';
+import { useFetchProducts } from '../hooks/use-fetch-products';
 
 const Products = () => {
-  const [products, setProducts] = React.useState([]);
-  React.useEffect(() => {
-    let isMounted = true;
-
-    API.products
-      .all()
-      .then(({ data }) => {
-        if (isMounted) {
-          setProducts(data);
-        }
-      })
-      .catch((error) => {
-        console.log({ error });
-      });
-
-    return () => {
-      isMounted = false;
-    };
-  }, []);
+  const { products } = useFetchProducts();
 
   return (
     <div className="bg-white">

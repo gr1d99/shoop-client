@@ -2,14 +2,14 @@ import axios from 'axios';
 
 const baseUrl = 'http://localhost:4000';
 
-const instance = axios.create({
+export const instance = axios.create({
   baseURL: baseUrl,
   headers: {
     contentType: 'application/json'
   }
 });
 
-const endpoints = {
+export const endpoints = {
   products: '/products'
 };
 
