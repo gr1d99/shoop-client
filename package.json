@@ -3,6 +3,7 @@
   "version": "4.2.14",
   "license": "MIT",
   "scripts": {
+    "analyze": "source-map-explorer 'build/public/static/js/*.js'",
     "build:tailwind": "tailwindcss build src/assets/css/tailwind.css -o src/assets/css/tailwind.output.css",
     "prestart": "npm run build:tailwind",
     "prebuild": "npm run build:tailwind",
@@ -21,7 +22,8 @@
     "prop-types": "^15.8.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "source-map-explorer": "^2.5.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.2",
