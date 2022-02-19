@@ -2,10 +2,16 @@ import { string } from 'prop-types';
 
 import { AddToCartBtn } from '../../utils/themes';
 
-const AddToCartButton = ({ name }) => {
+const AddToCartButton = ({ name, handleOnClick, product }) => {
   return (
-    <button type="button" className={AddToCartBtn}>
-      Add to bag<span className="sr-only">, {name}</span>
+    <button
+      type="button"
+      className={AddToCartBtn}
+      data-testid="add-to-cart-btn"
+      onClick={() => {
+        handleOnClick(product);
+      }}>
+      <span className="sr-only">{name}</span>
     </button>
   );
 };

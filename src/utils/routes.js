@@ -1,4 +1,5 @@
 export const routesBuilder = {
   root: '/',
-  products: '/products'
+  products: '/products',
+  admin: '/admin'
 };
