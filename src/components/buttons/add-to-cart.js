@@ -11,7 +11,8 @@ const AddToCartButton = ({ name, handleOnClick, product }) => {
       onClick={() => {
         handleOnClick(product);
       }}>
-      <span className="sr-only">{name}</span>
+      <span className="sr-only">Add {product.name} to cart</span>
+      {name}
     </button>
   );
 };

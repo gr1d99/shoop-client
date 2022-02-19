@@ -2,8 +2,10 @@ import React from 'react';
 import { ProductCard } from '../components/cards/product';
 import { AddToCartButton } from '../components/buttons/add-to-cart';
 import { useFetchProducts } from '../hooks/use-fetch-products';
+import { useCart } from '../contexts/cart-provider';
 
 const Products = () => {
+  const { handleAddToCart } = useCart();
   const { products } = useFetchProducts();
 
   return (
@@ -16,7 +18,11 @@ const Products = () => {
             <div key={product.id}>
               <ProductCard product={product} />
               <div className="mt-6">
-                <AddToCartButton name="Add to Cart" />
+                <AddToCartButton
+                  name="Add to Cart"
+                  handleOnClick={handleAddToCart}
+                  product={product}
+                />
               </div>
             </div>
           ))}
