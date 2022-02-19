@@ -1,4 +1,5 @@
 import { shape, string } from 'prop-types';
+
 import { ProductCardBase, ProductCardImage, ProductCardImageContainer } from '../../utils/themes';
 
 const ProductCard = ({ product }) => {

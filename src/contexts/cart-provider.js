@@ -1,6 +1,18 @@
 import React from 'react';
 
-const useCart = () => {
+const CartContext = React.createContext({
+  cartItems: {
+    count: 0,
+    items: {}
+  },
+  handleAddToCart: (item) => {}
+});
+
+export const useCart = () => {
+  return React.useContext(CartContext);
+};
+
+const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = React.useState({ count: 0, items: {} });
 
   const addItem = (product) => {
@@ -19,7 +31,15 @@ const useCart = () => {
     addItem(product);
   };
 
-  return { cartItems, handleAddToCart };
+  return (
+    <CartContext.Provider
+      value={{
+        cartItems,
+        handleAddToCart
+      }}>
+      {children}
+    </CartContext.Provider>
+  );
 };
 
-export default useCart;
+export default CartProvider;
