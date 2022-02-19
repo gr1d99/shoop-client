@@ -16,7 +16,7 @@ const Products = () => {
             <div key={product.id}>
               <ProductCard product={product} />
               <div className="mt-6">
-                <AddToCartButton name={product.name} />
+                <AddToCartButton name="Add to Cart" />
               </div>
             </div>
           ))}

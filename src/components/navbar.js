@@ -4,12 +4,16 @@ import { SearchIcon } from '@heroicons/react/solid';
 import { MenuIcon, XIcon, ShoppingCartIcon } from '@heroicons/react/outline';
 import { Link } from 'react-router-dom';
 import { routesBuilder } from '../utils/routes';
+import { useCart } from '../contexts/cart-provider';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
 const Navbar = () => {
+  const { cartItems } = useCart();
+  const { count } = cartItems;
+
   return (
     <Disclosure as="nav" className="bg-white shadow">
       {({ open }) => (
@@ -91,8 +95,10 @@ const Navbar = () => {
                   className="relative flex-shrink-0 bg-white p-1 text-gray-400 rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                   <span className="sr-only">Cart Items</span>
                   <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
-                  <span className="absolute right-0 top-0 rounded-full bg-indigo-500 w-4 h-4 top right pr-0 m-0 text-white text-xs text-center transform translate-x-1 -translate-y-1">
-                    1
+                  <span
+                    className="absolute right-0 top-0 rounded-full bg-indigo-500 w-4 h-4 top right pr-0 m-0 text-white text-xs text-center transform translate-x-1 -translate-y-1"
+                    data-testid="cart-items-count">
+                    {count}
                   </span>
                 </button>
 
