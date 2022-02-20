@@ -14,7 +14,7 @@ export const useFetchProducts = () => {
       API.products
         .all()
         .then(({ data }) => {
-          setProducts(data);
+          setProducts(data.data);
         })
         .catch((error) => {})
         .finally(() => {

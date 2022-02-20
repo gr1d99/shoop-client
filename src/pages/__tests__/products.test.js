@@ -14,26 +14,32 @@ describe('<Products />', () => {
     const mock = new MockAdapter(instance);
 
     beforeEach(() => {
-      mock.onGet(endpoints.products).reply(200, [
-        {
-          id: 1,
-          slug: 'odit',
-          name: 'odit',
-          images: 'https://placehold.it/300x300.png',
-          price: '998.0',
-          description: 'Iusto ea et et.',
-          brand_id: 11
-        },
-        {
-          id: 2,
-          slug: 'odit',
-          name: 'odit',
-          images: 'https://placehold.it/300x300.png',
-          price: '998.0',
-          description: 'Iusto ea et et.',
-          brand_id: 11
-        }
-      ]);
+      mock.onGet(endpoints.products).reply(200, {
+        data: [
+          {
+            id: 1,
+            attributes: {
+              slug: 'odit',
+              name: 'odit',
+              images: 'https://placehold.it/300x300.png',
+              price: '998.0',
+              description: 'Iusto ea et et.',
+              brand_id: 11
+            }
+          },
+          {
+            id: 2,
+            attributes: {
+              slug: 'odit',
+              name: 'odit',
+              images: 'https://placehold.it/300x300.png',
+              price: '998.0',
+              description: 'Iusto ea et et.',
+              brand_id: 11
+            }
+          }
+        ]
+      });
     });
 
     afterEach(() => {

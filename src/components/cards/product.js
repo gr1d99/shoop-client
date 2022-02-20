@@ -3,7 +3,8 @@ import { shape, string } from 'prop-types';
 import { ProductCardBase, ProductCardImage, ProductCardImageContainer } from '../../utils/themes';
 
 const ProductCard = ({ product }) => {
-  const { images, name, color, price } = product;
+  const { attributes } = product;
+  const { images, name, color, price } = attributes;
   const image = images.split(/,/)?.[0] || '';
 
   return (
