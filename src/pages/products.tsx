@@ -1,11 +1,13 @@
-import React from 'react';
+import * as React from 'react';
 import { ProductCard } from '../components/cards/product';
 import { AddToCartButton } from '../components/buttons/add-to-cart';
 import { useFetchProducts } from '../hooks/use-fetch-products';
 import { useCart } from '../contexts/cart-provider';
+import { IProduct } from '../interfaces';
 
 const Products = () => {
   const { handleAddToCart } = useCart();
+
   const { products } = useFetchProducts();
 
   return (
@@ -14,7 +16,7 @@ const Products = () => {
         <div
           className="mt-8 grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8"
           data-testid="products-list">
-          {products.map((product) => (
+          {products.map((product: IProduct) => (
             <div key={product.id}>
               <ProductCard product={product} />
               <div className="mt-6">

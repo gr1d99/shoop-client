@@ -1,5 +1,4 @@
-import React from 'react';
-
+import * as React from 'react';
 import CartProvider from './contexts/cart-provider';
 
 import Routes from './routes/routes';

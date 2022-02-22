@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import * as React from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { SearchIcon } from '@heroicons/react/solid';
 import { MenuIcon, XIcon, ShoppingCartIcon } from '@heroicons/react/outline';
@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { routesBuilder } from '../utils/routes';
 import { useCart } from '../contexts/cart-provider';
 
-function classNames(...classes) {
+function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(' ');
 }
 
@@ -100,7 +100,7 @@ const Navbar = () => {
                     </Menu.Button>
                   </div>
                   <Transition
-                    as={Fragment}
+                    as={React.Fragment}
                     enter="transition ease-out duration-100"
                     enterFrom="transform opacity-0 scale-95"
                     enterTo="transform opacity-100 scale-100"

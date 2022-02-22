@@ -1,8 +1,8 @@
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
-import React from 'react';
+import * as React from 'react';
 import { hydrate } from 'react-dom';
-import './assets/css/tailwind.output.css'
+import './assets/css/tailwind.output.css';
 
 hydrate(
   <BrowserRouter>

@@ -1,21 +1,41 @@
-import React from 'react';
+import * as React from 'react';
+import { IProduct } from '../interfaces';
+import { HandleAddToCartType } from '../../types';
 
-const CartContext = React.createContext({
+interface ICartItem {
+  [key: string]: IProduct;
+}
+
+interface ICartItems {
+  count: number;
+  items: ICartItem;
+}
+
+interface IInitialState {
+  cartItems: ICartItems;
+}
+
+interface ICartContext extends IInitialState {
+  handleAddToCart: HandleAddToCartType;
+}
+
+export const initialState: any = {
   cartItems: {
     count: 0,
     items: {}
-  },
-  handleAddToCart: (item) => {}
-});
+  }
+};
+
+const CartContext = React.createContext<ICartContext>(initialState);
 
 export const useCart = () => {
   return React.useContext(CartContext);
 };
 
-const CartProvider = ({ children }) => {
+const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [cartItems, setCartItems] = React.useState({ count: 0, items: {} });
 
-  const addItem = (product) => {
+  const addItem = (product: IProduct): void => {
     const { id } = product;
 
     setCartItems((prevState) => {
@@ -27,7 +47,7 @@ const CartProvider = ({ children }) => {
     });
   };
 
-  const handleAddToCart = (product) => {
+  const handleAddToCart = (product: IProduct) => {
     addItem(product);
   };
 

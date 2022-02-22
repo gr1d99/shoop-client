@@ -1,9 +1,10 @@
-import React from 'react';
+import * as React from 'react';
 import API from '../api';
+import { IProduct } from '../interfaces';
 
 export const useFetchProducts = () => {
-  const [loading, setLoading] = React.useState(false);
-  const [products, setProducts] = React.useState([]);
+  const [loading, setLoading] = React.useState<boolean>(false);
+  const [products, setProducts] = React.useState<Array<IProduct>>([]);
 
   React.useEffect(() => {
     let isMounted = true;

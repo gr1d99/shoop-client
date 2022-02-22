@@ -5,9 +5,9 @@ module.exports = {
     jest: true
   },
   extends: [
-    'airbnb',
-    'eslint:recommended',
     'plugin:react/recommended',
+    'eslint:recommended',
+    'airbnb',
     'airbnb/hooks',
     'plugin:prettier/recommended'
   ],
@@ -20,7 +20,7 @@ module.exports = {
   },
   plugins: ['react', 'prettier'],
   rules: {
-    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', '.tsx', '.ts'] }],
     'react/no-typos': 'error',
     'linebreak-style': ['error', 'unix'],
     quotes: ['error', 'single', { avoidEscape: true, allowTemplateLiterals: false }],

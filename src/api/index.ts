@@ -13,13 +13,15 @@ export const endpoints = {
   products: '/products'
 };
 
-const withQueryString = (endpoint) => (queryString) => {
-  if (queryString) {
-    return `${endpoint}${queryString}`;
-  }
+const withQueryString =
+  (endpoint: string): Function =>
+  (queryString: string): string | void => {
+    if (queryString) {
+      return `${endpoint}${queryString}`;
+    }
 
-  return endpoint;
-};
+    return endpoint;
+  };
 
 const API = {
   products: {

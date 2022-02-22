@@ -1,8 +1,15 @@
 import { string } from 'prop-types';
 
 import { AddToCartBtn } from '../../utils/themes';
+import { IProduct } from '../../interfaces';
 
-const AddToCartButton = ({ name, handleOnClick, product }) => {
+interface IProps {
+  name: string;
+  handleOnClick: Function;
+  product: IProduct;
+}
+
+const AddToCartButton = ({ name, handleOnClick, product }: IProps) => {
   return (
     <button
       type="button"
@@ -11,7 +18,7 @@ const AddToCartButton = ({ name, handleOnClick, product }) => {
       onClick={() => {
         handleOnClick(product);
       }}>
-      <span className="sr-only">Add {product.name} to cart</span>
+      <span className="sr-only">Add {product.attributes.name} to cart</span>
       {name}
     </button>
   );

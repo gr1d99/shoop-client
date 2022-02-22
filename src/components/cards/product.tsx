@@ -1,15 +1,10 @@
 import { shape, string } from 'prop-types';
 
 import { ProductCardBase, ProductCardImage, ProductCardImageContainer } from '../../utils/themes';
+import { IProduct } from '../../interfaces';
 
 interface Props {
-  product: {
-    attributes: {
-      images: string;
-      name: string;
-      price: string;
-    };
-  };
+  product: IProduct;
 }
 
 const ProductCard = ({ product }: Props) => {
