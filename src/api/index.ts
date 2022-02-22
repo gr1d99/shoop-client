@@ -23,7 +23,7 @@ const withQueryString = (endpoint) => (queryString) => {
 
 const API = {
   products: {
-    all(queryString) {
+    all(queryString?: string) {
       const url = withQueryString(endpoints.products)(queryString);
 
       return instance.get(url);
