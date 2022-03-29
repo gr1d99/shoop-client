@@ -1,5 +1,11 @@
+const Root = '/';
+const AdminRoot = '/admin';
+
 export const routesBuilder = {
-  root: '/',
+  root: Root,
   products: '/products',
-  admin: '/admin'
+  admin: {
+    root: AdminRoot,
+    dashboard: `${AdminRoot}/dashboard`
+  }
 };

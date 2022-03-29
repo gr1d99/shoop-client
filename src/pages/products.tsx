@@ -16,18 +16,20 @@ const Products = () => {
         <div
           className="mt-8 grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8"
           data-testid="products-list">
-          {products.map((product: IProduct) => (
-            <div key={product.id}>
-              <ProductCard product={product} />
-              <div className="mt-6">
-                <AddToCartButton
-                  name="Add to Cart"
-                  handleOnClick={handleAddToCart}
-                  product={product}
-                />
+          {products.map((product: IProduct) => {
+            return (
+              <div key={product.id}>
+                <ProductCard product={product} />
+                <div className="mt-6">
+                  <AddToCartButton
+                    label="Add to Cart"
+                    handleOnClick={handleAddToCart}
+                    product={product}
+                  />
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>

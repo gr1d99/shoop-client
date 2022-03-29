@@ -110,6 +110,18 @@ const Navbar = () => {
                     <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
+                          <Link
+                            to={routesBuilder.admin.root}
+                            className={classNames(
+                              active ? 'bg-gray-100' : '',
+                              'block px-4 py-2 text-sm text-gray-700'
+                            )}>
+                            Admin
+                          </Link>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
                           <a
                             href="#"
                             className={classNames(
@@ -182,6 +194,12 @@ const Navbar = () => {
                 </button>
               </div>
               <div className="mt-3 space-y-1">
+                <Disclosure.Button
+                  as={Link}
+                  to={routesBuilder.admin.root}
+                  className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">
+                  Admin
+                </Disclosure.Button>
                 <Disclosure.Button
                   as="a"
                   href="#"

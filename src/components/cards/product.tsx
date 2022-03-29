@@ -10,7 +10,7 @@ interface Props {
 const ProductCard = ({ product }: Props) => {
   const { attributes } = product;
   const { images, name, price } = attributes;
-  const image = images.split(/,/)?.[0] || '';
+  const image = images?.split(/,/)?.[0] || '';
 
   return (
     <div className={ProductCardBase}>
@@ -34,9 +34,12 @@ const ProductCard = ({ product }: Props) => {
 
 ProductCard.propTypes = {
   product: shape({
-    name: string,
-    price: string,
-    image: string
+    id: string,
+    attributes: shape({
+      name: string,
+      price: string,
+      image: string
+    })
   }).isRequired
 };
 
