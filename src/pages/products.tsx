@@ -4,6 +4,7 @@ import { AddToCartButton } from '../components/buttons/add-to-cart';
 import { useFetchProducts } from '../hooks/use-fetch-products';
 import { useCart } from '../contexts/cart-provider';
 import { IProduct } from '../interfaces';
+import withHelmet from '../hocs/helmet';
 
 const Products = () => {
   const { handleAddToCart } = useCart();
@@ -36,4 +37,8 @@ const Products = () => {
   );
 };
 
-export default Products;
+const helmetAttributes = {
+  title: 'Products'
+};
+
+export default withHelmet(Products)(helmetAttributes);

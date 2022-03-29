@@ -2,6 +2,7 @@ import App from './App';
 import { StaticRouter } from 'react-router-dom';
 import express from 'express';
 import { renderToString } from 'react-dom/server';
+import { Helmet } from 'react-helmet';
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
@@ -30,16 +31,19 @@ export const renderApp = (req, res) => {
       <App />
     </StaticRouter>
   );
+  const helmet = Helmet.renderStatic();
   const html = `<!doctype html>
-  <html lang="">
+  <html lang="" ${helmet.htmlAttributes.toString()}>
   <head>
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta charset="utf-8" />
-      <title>Welcome to Razzle</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
+      ${helmet.title.toString()}
+      ${helmet.meta.toString()}
+      ${helmet.link.toString()}
       ${cssLinksFromAssets(assets, 'client')}
   </head>
-  <body>
+  <body ${helmet.bodyAttributes.toString()}>
       <div id="root">${markup}</div>
       ${jsScriptTagsFromAssets(assets, 'client', 'defer', 'crossorigin')}
   </body>
