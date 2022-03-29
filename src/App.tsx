@@ -1,18 +1,15 @@
 import * as React from 'react';
 
-import CartProvider from './contexts/cart-provider';
-
 import Routes from './routes/routes';
 import AppLayout from './layout/app';
-import Navbar from './components/navbar';
+import LayoutProvider from './contexts/layout-provider';
 
 const App = () => (
-  <AppLayout>
-    <CartProvider>
-      <Navbar />
+  <LayoutProvider>
+    <AppLayout>
       <Routes />
-    </CartProvider>
-  </AppLayout>
+    </AppLayout>
+  </LayoutProvider>
 );
 
 export default App;
