@@ -1,15 +1,17 @@
-import { string } from 'prop-types';
+import { func, number, shape, string } from 'prop-types';
 
 import { AddToCartBtn } from '../../utils/themes';
 import { IProduct } from '../../interfaces';
 
 interface IProps {
-  name: string;
-  handleOnClick: Function;
+  label: string;
+  handleOnClick: (product: IProduct) => void;
   product: IProduct;
 }
 
-const AddToCartButton = ({ name, handleOnClick, product }: IProps) => {
+const AddToCartButton = ({ label, handleOnClick, product }: IProps) => {
+  const { attributes } = product;
+  const { name } = attributes;
   return (
     <button
       type="button"
@@ -18,14 +20,21 @@ const AddToCartButton = ({ name, handleOnClick, product }: IProps) => {
       onClick={() => {
         handleOnClick(product);
       }}>
-      <span className="sr-only">Add {product.attributes.name} to cart</span>
-      {name}
+      <span className="sr-only">Add {name} to cart</span>
+      {label}
     </button>
   );
 };
 
 AddToCartButton.propTypes = {
-  name: string.isRequired
+  label: string.isRequired,
+  handleOnClick: func.isRequired,
+  product: shape({
+    id: string,
+    attributes: shape({
+      name: string
+    })
+  }).isRequired
 };
 
 export { AddToCartButton };
