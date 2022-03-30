@@ -3,7 +3,7 @@ import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { SearchIcon } from '@heroicons/react/solid';
 import { MenuIcon, XIcon, ShoppingCartIcon } from '@heroicons/react/outline';
 import { Link } from 'react-router-dom';
-import { routesBuilder } from '../utils/routes';
+import { routeBuilder } from '../utils/routes';
 import { useCart } from '../contexts/cart-provider';
 
 function classNames(...classes: string[]): string {
@@ -22,7 +22,7 @@ const Navbar = () => {
             <div className="flex justify-between h-16">
               <div className="flex px-2 lg:px-0">
                 <div className="flex-shrink-0 flex items-center">
-                  <Link to={routesBuilder.root}>
+                  <Link to={routeBuilder.root}>
                     <img
                       className="block lg:hidden h-8 w-auto"
                       src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
@@ -38,7 +38,7 @@ const Navbar = () => {
                 <div className="hidden lg:ml-6 lg:flex lg:space-x-8">
                   {/* Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" */}
                   <Link
-                    to={routesBuilder.products}
+                    to={routeBuilder.products}
                     className="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
                     id="open-products">
                     Products
@@ -112,7 +112,7 @@ const Navbar = () => {
                       <Menu.Item>
                         {({ active }) => (
                           <Link
-                            to={routesBuilder.admin.root}
+                            to={routeBuilder.admin.root}
                             className={classNames(
                               active ? 'bg-gray-100' : '',
                               'block px-4 py-2 text-sm text-gray-700'
@@ -197,7 +197,7 @@ const Navbar = () => {
               <div className="mt-3 space-y-1">
                 <Disclosure.Button
                   as={Link}
-                  to={routesBuilder.admin.root}
+                  to={routeBuilder.admin.root}
                   className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">
                   Admin
                 </Disclosure.Button>
