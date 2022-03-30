@@ -1,6 +1,6 @@
 import { MemoryRouter } from 'react-router-dom';
 import MockAdapter from 'axios-mock-adapter';
-import { getByTestId, render, waitFor } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import CartProvider from '../../contexts/cart-provider';
@@ -22,7 +22,7 @@ describe('<Products />', () => {
             attributes: {
               slug: 'odit',
               name: 'odit',
-              images: 'https://placehold.it/300x300.png',
+              images: ['https://placehold.it/300x300.png'],
               price: '998.0',
               description: 'Iusto ea et et.',
               brand_id: 11
@@ -33,7 +33,7 @@ describe('<Products />', () => {
             attributes: {
               slug: 'odit',
               name: 'odit',
-              images: 'https://placehold.it/300x300.png',
+              images: ['https://placehold.it/300x300.png'],
               price: '998.0',
               description: 'Iusto ea et et.',
               brand_id: 11
@@ -43,17 +43,21 @@ describe('<Products />', () => {
       });
     });
 
-    afterEach(() => {
-      mock.reset();
-    });
+    afterAll(() => {});
 
     it('renders products list', async () => {
-      const { findByTestId } = render(<Products />);
+      const { findByTestId } = render(
+        <MemoryRouter>
+          <CartProvider>
+            <Products />
+          </CartProvider>
+        </MemoryRouter>
+      );
 
-      const node = await waitFor(() => findByTestId('products-list'));
+      const node = await findByTestId('products-list');
 
       expect(node).toBeInTheDocument();
-      expect(node.children).toHaveLength(2);
+      expect(node.children.length).toEqual(2);
     });
 
     it('updates cart items count when add to cart button is clicked', async () => {
@@ -65,15 +69,14 @@ describe('<Products />', () => {
           </CartProvider>
         </MemoryRouter>
       );
-
       await waitFor(() => findByTestId('products-list'));
       const nodes = queryAllByTestId('add-to-cart-btn');
 
       userEvent.click(nodes[0]);
       const cartCountEl = getByTestId('cart-items-count');
-      expect(cartCountEl).toHaveTextContent(1);
+      expect(cartCountEl).toHaveTextContent('1');
       userEvent.click(nodes[1]);
-      expect(cartCountEl).toHaveTextContent(2);
+      expect(cartCountEl).toHaveTextContent('2');
     });
   });
 });

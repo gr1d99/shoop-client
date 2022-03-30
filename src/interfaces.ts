@@ -13,6 +13,6 @@ interface IProductAttributes {
 }
 
 export interface IProduct {
-  id: string;
+  id: string | number;
   attributes: IProductAttributes;
 }

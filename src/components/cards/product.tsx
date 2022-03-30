@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { shape, string } from 'prop-types';
+import { number, oneOfType, shape, string } from 'prop-types';
 
 import { ProductCardBase, ProductCardImage, ProductCardImageContainer } from '../../utils/themes';
 import { IProduct } from '../../interfaces';
@@ -12,7 +12,7 @@ interface Props {
 const ProductCard = ({ product }: Props) => {
   const { attributes } = product;
   const { images, name, price, slug } = attributes;
-  const image = images?.split(/,/)?.[0] || '';
+  const image = images[0] || '';
 
   return (
     <div className={ProductCardBase}>
@@ -38,7 +38,7 @@ const ProductCard = ({ product }: Props) => {
 
 ProductCard.propTypes = {
   product: shape({
-    id: string,
+    id: oneOfType([string, number]),
     attributes: shape({
       name: string,
       price: string,
