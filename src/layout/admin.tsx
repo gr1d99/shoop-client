@@ -1,24 +1,45 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Layout, Menu, Breadcrumb } from 'antd';
-import {
-  DesktopOutlined,
-  PieChartOutlined,
-  FileOutlined,
-  TeamOutlined,
-  UserOutlined
-} from '@ant-design/icons';
+import { Link, useHistory } from 'react-router-dom';
+import { Menu, MenuProps, Breadcrumb, Layout } from 'antd';
+import { DesktopOutlined } from '@ant-design/icons';
 import { routeBuilder } from '../utils/routes';
 import 'antd/dist/antd.css';
+import { IAdminMenuItem } from '../interfaces';
 
 const { Header, Content, Footer, Sider } = Layout;
-const { SubMenu } = Menu;
+
+const navigableKeys: { [key: string]: string } = { productsList: 'products-list' };
+
+const menuItems: IAdminMenuItem[] = [
+  {
+    label: 'Products',
+    key: 'products',
+    icon: <DesktopOutlined />,
+    children: [{ label: 'List', key: navigableKeys.productsList }]
+  }
+];
 
 const AdminLayout = ({ children }: { children: React.ReactNode[] }) => {
-  const [collapsed, setCollapsed] = React.useState(false);
+  const history = useHistory();
+  const [collapsed, setCollapsed] = React.useState<boolean>(false);
 
   const onCollapse = (): void => {
     setCollapsed((prevState) => !prevState);
+  };
+
+  const onClick: MenuProps['onClick'] = (event) => {
+    const { key } = event;
+
+    switch (key) {
+      case navigableKeys.productsList: {
+        history.push(routeBuilder.admin.listProducts);
+
+        break;
+      }
+
+      default:
+        break;
+    }
   };
 
   return (
@@ -30,26 +51,13 @@ const AdminLayout = ({ children }: { children: React.ReactNode[] }) => {
             style={{ height: '32px', margin: '16px', background: 'rgba(255,255,255,0.3)' }}
           />
         </Link>
-        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-          <Menu.Item key="1" icon={<PieChartOutlined />}>
-            Option 1
-          </Menu.Item>
-          <Menu.Item key="2" icon={<DesktopOutlined />}>
-            Option 2
-          </Menu.Item>
-          <SubMenu key="sub1" icon={<UserOutlined />} title="User">
-            <Menu.Item key="3">Tom</Menu.Item>
-            <Menu.Item key="4">Bill</Menu.Item>
-            <Menu.Item key="5">Alex</Menu.Item>
-          </SubMenu>
-          <SubMenu key="sub2" icon={<TeamOutlined />} title="Team">
-            <Menu.Item key="6">Team 1</Menu.Item>
-            <Menu.Item key="8">Team 2</Menu.Item>
-          </SubMenu>
-          <Menu.Item key="9" icon={<FileOutlined />}>
-            Files
-          </Menu.Item>
-        </Menu>
+        <Menu
+          theme="dark"
+          defaultSelectedKeys={['1']}
+          mode="inline"
+          items={menuItems}
+          onClick={onClick}
+        />
       </Sider>
       <Layout className="site-layout">
         <Header className="site-layout-background" style={{ padding: 0 }} />
