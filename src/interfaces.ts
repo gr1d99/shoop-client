@@ -25,3 +25,10 @@ export interface IProduct {
   id: string | number;
   attributes: IProductAttributes;
 }
+
+export interface IAdminMenuItem {
+  label: string;
+  key: React.Key;
+  icon?: React.ReactNode;
+  children?: { label: string; key: string; icon?: React.ReactNode }[];
+}

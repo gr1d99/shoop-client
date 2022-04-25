@@ -15,7 +15,6 @@ interface IProductImageProps extends IImage {
 }
 
 const ProductImages = ({ images, loading }: IProductImageProps) => {
-  console.log({ images });
   return (
     <>
       {loading ? (

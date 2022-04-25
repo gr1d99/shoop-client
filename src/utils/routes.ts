@@ -11,6 +11,7 @@ export const routeBuilder = {
   productDetail: (slug: string): string => `${routeBuilder.products}/${slug}`,
   admin: {
     root: AdminRoot,
-    dashboard: `${AdminRoot}/dashboard`
+    dashboard: `${AdminRoot}/dashboard`,
+    listProducts: AdminRoot + '/products'
   }
 };
