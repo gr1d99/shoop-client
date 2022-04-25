@@ -10,7 +10,7 @@
     "start": "razzle --max_old_space_size=2560 start",
     "build": "PORT=$PORT razzle --max_old_space_size=2560 build --noninteractive",
     "test": "razzle test --env=jsdom",
-    "start:prod": "NODE_ENV=production node build/server.js",
+    "start:prod": "NODE_ENV=production port=$PORT node build/server.js",
     "cypress:open": "cypress open"
   },
   "dependencies": {
