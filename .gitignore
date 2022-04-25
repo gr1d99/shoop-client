@@ -15,3 +15,5 @@ cache
 .idea/
 
 src/assets/css/tailwind.output.css
+
+.env

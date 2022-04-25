@@ -7,10 +7,10 @@
     "build:tailwind": "tailwindcss -i ./src/assets/css/index.css -o ./src/assets/css/tailwind.output.css",
     "prestart": "npm run build:tailwind",
     "prebuild": "npm run build:tailwind",
-    "start": "razzle start",
-    "build": "razzle build",
+    "start": "razzle --max_old_space_size=2560 start",
+    "build": "PORT=$PORT razzle --max_old_space_size=2560 build --noninteractive",
     "test": "razzle test --env=jsdom",
-    "start:prod": "NODE_ENV=production node build/server.js",
+    "start:prod": "NODE_ENV=production port=$PORT node build/server.js",
     "cypress:open": "cypress open"
   },
   "dependencies": {
@@ -27,10 +27,16 @@
     "@types/react-dom": "^17.0.11",
     "antd": "^4.20.0",
     "axios": "^0.21.4",
+    "babel-preset-razzle": "^4.2.16",
     "express": "^4.17.1",
+    "html-webpack-plugin": "^5.2.0",
+    "mini-css-extract-plugin": "^0.9.0",
     "prop-types": "^15.8.1",
+    "razzle": "^4.2.16",
+    "razzle-dev-utils": "^4.2.16",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-gtm-module": "^2.0.11",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^5.2.0",
     "source-map-explorer": "^2.5.2",
@@ -39,7 +45,9 @@
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.3.0",
     "tslint-react": "^5.0.0",
-    "typescript": "^4.5.5"
+    "typescript": "^4.5.5",
+    "webpack": "^5.65.0",
+    "webpack-dev-server": "^3.11.0"
   },
   "devDependencies": {
     "@testing-library/dom": "^8.11.3",
@@ -51,7 +59,6 @@
     "@types/react-helmet": "^6.1.5",
     "@types/react-router-dom": "^5.3.3",
     "axios-mock-adapter": "^1.20.0",
-    "babel-preset-razzle": "4.2.14",
     "cypress": "^9.5.3",
     "eslint": "^8.9.0",
     "eslint-config-airbnb": "^19.0.4",
@@ -61,12 +68,10 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "html-webpack-plugin": "^4.5.2",
-    "mini-css-extract-plugin": "^0.9.0",
-    "prettier": "^2.5.1",
-    "razzle": "^4.2.14",
-    "razzle-dev-utils": "^4.2.14",
-    "webpack": "^4.44.1",
-    "webpack-dev-server": "^3.11.2"
+    "prettier": "^2.5.1"
+  },
+  "engines": {
+    "npm": "6.14.13",
+    "node": "14.17.0"
   }
 }

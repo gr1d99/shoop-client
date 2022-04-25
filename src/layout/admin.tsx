@@ -1,10 +1,15 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { Menu, MenuProps, Breadcrumb, Layout } from 'antd';
-import { DesktopOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
+import { Layout, Menu, Breadcrumb } from 'antd';
+import {
+  DesktopOutlined,
+  PieChartOutlined,
+  FileOutlined,
+  TeamOutlined,
+  UserOutlined
+} from '@ant-design/icons';
 import { routeBuilder } from '../utils/routes';
 import 'antd/dist/antd.css';
-import { IAdminMenuItem } from '../interfaces';
 
 const { Header, Content, Footer, Sider } = Layout;
 

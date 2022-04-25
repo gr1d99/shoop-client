@@ -7,6 +7,9 @@ import Dashboard from '../pages/admin/dashboard';
 
 import { routePaths, routeBuilder } from '../utils/routes';
 
+import { routePaths, routeBuilder } from '../utils/routes';
+import Dashboard from '../pages/admin/dashboard';
+import ProductDetail from '../pages/product';
 const Home = loadable(() => import('../pages/home'));
 const Products = loadable(() => import('../pages/products'));
 
