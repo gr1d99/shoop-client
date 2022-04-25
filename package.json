@@ -8,7 +8,7 @@
     "prestart": "npm run build:tailwind",
     "prebuild": "npm run build:tailwind",
     "start": "razzle --max_old_space_size=2560 start",
-    "build": "razzle --max_old_space_size=2560 build --noninteractive",
+    "build": "PORT=$PORT razzle --max_old_space_size=2560 build --noninteractive",
     "test": "razzle test --env=jsdom",
     "start:prod": "NODE_ENV=production node build/server.js",
     "cypress:open": "cypress open"
