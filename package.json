@@ -7,8 +7,8 @@
     "build:tailwind": "tailwindcss -i ./src/assets/css/index.css -o ./src/assets/css/tailwind.output.css",
     "prestart": "npm run build:tailwind",
     "prebuild": "npm run build:tailwind",
-    "start": "razzle start",
-    "build": "razzle build --noninteractive",
+    "start": "razzle --max_old_space_size=2560 start",
+    "build": "razzle --max_old_space_size=2560 build --noninteractive",
     "test": "razzle test --env=jsdom",
     "start:prod": "NODE_ENV=production node build/server.js",
     "cypress:open": "cypress open"
