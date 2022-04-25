@@ -1,4 +1,4 @@
-import { func, number, shape, string } from 'prop-types';
+import { func, number, oneOf, oneOfType, shape, string } from 'prop-types';
 
 import { AddToCartBtn } from '../../utils/themes';
 import { IProduct } from '../../interfaces';
@@ -30,7 +30,7 @@ AddToCartButton.propTypes = {
   label: string.isRequired,
   handleOnClick: func.isRequired,
   product: shape({
-    id: string,
+    id: oneOfType([string, number]),
     attributes: shape({
       name: string
     })

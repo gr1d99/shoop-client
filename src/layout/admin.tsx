@@ -8,7 +8,8 @@ import {
   TeamOutlined,
   UserOutlined
 } from '@ant-design/icons';
-import { routesBuilder } from '../utils/routes';
+import { routeBuilder } from '../utils/routes';
+import 'antd/dist/antd.css';
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -23,7 +24,7 @@ const AdminLayout = ({ children }: { children: React.ReactNode[] }) => {
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Sider collapsible={true} collapsed={collapsed} onCollapse={onCollapse}>
-        <Link to={routesBuilder.root}>
+        <Link to={routeBuilder.root}>
           <div
             className="logo"
             style={{ height: '32px', margin: '16px', background: 'rgba(255,255,255,0.3)' }}
