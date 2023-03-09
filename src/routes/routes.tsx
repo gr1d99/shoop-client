@@ -1,21 +1,18 @@
+import * as React from 'react';
 import loadable from '@loadable/component';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
-import ProductDetail from '../pages/product';
-
-import Dashboard from '../pages/admin/dashboard';
-
 import { routePaths, routeBuilder } from '../utils/routes';
 
-import { routePaths, routeBuilder } from '../utils/routes';
 import Dashboard from '../pages/admin/dashboard';
 import ProductDetail from '../pages/product';
-const Home = loadable(() => import('../pages/home'));
-const Products = loadable(() => import('../pages/products'));
 
-const AdminProductsList = loadable(() => import('../pages/admin/products/list'));
+const Home = loadable(async () => await import('../pages/home'));
+const Products = loadable(async () => await import('../pages/products'));
 
-const Routes = () => {
+const AdminProductsList = loadable(async () => await import('../pages/admin/products/list'));
+
+function Routes() {
   return (
     <Switch>
       <Route exact={true} path={routeBuilder.root} component={Home} />
@@ -28,6 +25,6 @@ const Routes = () => {
       <Route path={routeBuilder.admin.listProducts} component={AdminProductsList} />
     </Switch>
   );
-};
+}
 
 export default Routes;

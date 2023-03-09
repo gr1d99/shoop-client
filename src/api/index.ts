@@ -25,13 +25,13 @@ const withQueryString =
 
 const API = {
   products: {
-    get(id: number | string) {
-      return instance.get(`${endpoints.products}/${id}`);
+    async get(id: number | string) {
+      return await instance.get(`${endpoints.products}/${id}`);
     },
-    all(queryString?: string) {
+    async all(queryString?: string) {
       const url = withQueryString(endpoints.products)(queryString);
 
-      return instance.get(url);
+      return await instance.get(url);
     }
   }
 };
